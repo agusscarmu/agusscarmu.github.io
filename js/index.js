@@ -39,6 +39,8 @@ document.addEventListener('scroll', () => {
     }
 });
 
+animate();
+
 function resizeCanvas(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -47,7 +49,6 @@ function resizeCanvas(){
     ctx.fillStyle = gradient;
     ctx.strokeStyle = gradient;
     effect.handleParticles(ctx);
-    animate();
 }
 
 window.addEventListener('resize', resizeCanvas);

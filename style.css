@@ -81,7 +81,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .scroll-down.hide{
@@ -104,7 +103,7 @@ body{
 
 .scroll-down{
     height: 10%;
-    width: auto;
+    width: 100px;
     opacity: 1;
     transition: opacity 500ms ease-out;
     animation: jump 2.5s infinite;
@@ -119,7 +118,7 @@ body{
 .scroll-down img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .text-container h1{

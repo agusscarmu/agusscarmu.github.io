@@ -3,5 +3,5 @@ export const Configuration = {
     color: 220,
     maxDistance: 280,
     particleSize: 3,
-    particleVelocity: 0.03
+    particleVelocity: 0.1
 };
