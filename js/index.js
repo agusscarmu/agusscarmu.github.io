@@ -9,7 +9,7 @@ canvas.height = window.innerHeight;
 const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
 gradient.addColorStop('0.2', colors[800]);
 gradient.addColorStop('0.4', colors[600]);
-gradient.addColorStop('0.6', colors[400]);
+gradient.addColorStop('0.6', colors[500]);
 ctx.fillStyle = gradient;
 ctx.strokeStyle = gradient;
 var mouseX = 0;

@@ -19,6 +19,10 @@
     --azure-radiance-950: 34, 41, 73;
 }
 
+:root{
+    --gradient-color-div-1: rgba(var(--azure-radiance-950), 0.8);
+    --gradient-color-div-2: rgba(var(--azure-radiance-800), 0.9);
+}
 
 #canvas-1{
     background: black;
@@ -50,6 +54,6 @@
 .presentacion{
     width: 30%;
     height: 500px;
-    background-color: rgba(var(--azure-radiance-950), 0.9);
+    background: linear-gradient(to bottom right, var(--gradient-color-div-1), var(--gradient-color-div-2));
     border-radius: 10px;
 }
