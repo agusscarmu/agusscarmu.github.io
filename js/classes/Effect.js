@@ -14,7 +14,7 @@ export class Effect {
 
     createParticles(){
         for(let i = 0; i < this.numberOfParticles; i++){
-            this.particles.push(new Particle(this, Configuration.particleSize));
+            this.particles.push(new Particle(this, Configuration.particleSize, Configuration.particleVelocity));
         }
     }
 

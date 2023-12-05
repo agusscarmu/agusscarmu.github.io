@@ -5,13 +5,13 @@ function randomNumber(min, max) {
 
 export class Particle{
 
-    constructor(effect, size){
+    constructor(effect, size, velocity){
         this.effect = effect;
         this.radius = randomNumber(1,size);
         this.x = this.radius + Math.random() * (effect.width - this.radius * 2);
         this.y = this.radius + Math.random() * (effect.height - this.radius * 2);
-        this.speedX = (Math.random() * 4 - 2)*0.1;
-        this.speedY = (Math.random() * 4 - 2)*0.1;
+        this.speedX = (Math.random() * 4 - 2)*velocity;
+        this.speedY = (Math.random() * 4 - 2)*velocity;
         console.log(this.speedX)
     }
 
