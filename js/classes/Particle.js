@@ -2,9 +2,17 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function calculateSpeed(velocity){
+    const maxSpeed = 0.001;
+    let speed= (Math.random() * 4 - 2)*velocity;
+    if(speed > maxSpeed){
+
+        return maxSpeed;
+    }
+    return speed;
+}
 
 export class Particle{
-
     constructor(effect, size, velocity){
         this.effect = effect;
         this.radius = randomNumber(1,size);
@@ -12,7 +20,6 @@ export class Particle{
         this.y = this.radius + Math.random() * (effect.height - this.radius * 2);
         this.speedX = (Math.random() * 4 - 2)*velocity;
         this.speedY = (Math.random() * 4 - 2)*velocity;
-        console.log(this.speedX)
     }
 
     draw(context){

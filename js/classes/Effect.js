@@ -28,6 +28,8 @@ export class Effect {
 
     connectParticles(context, mouseX, mouseY){
         const maxDistance = Configuration.maxDistance;
+        const maxLines = 5;
+        let linesToMouseCount = 0;
         for(let a = 0; a < this.particles.length; a++){
             for(let b = a; b < this.particles.length; b++){
                 const dx = this.particles[a].x - this.particles[b].x;
@@ -46,13 +48,14 @@ export class Effect {
                 const dx = this.particles[a].x - mouseX;
                 const dy = this.particles[a].y - mouseY;
                 const distance = Math.hypot(dx, dy);
-                if(distance < maxDistance){
+                if(distance < maxDistance && linesToMouseCount < maxLines){
                     const opacity = 1 - (distance / maxDistance);
                     context.globalAlpha = opacity;
                     context.beginPath();
                     context.moveTo(this.particles[a].x, this.particles[a].y);
                     context.lineTo(mouseX, mouseY);
                     context.stroke();
+                    linesToMouseCount++;
                 }
             }
             
