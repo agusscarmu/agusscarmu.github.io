@@ -2,19 +2,19 @@ export const knowledgeList = {
     backend: [
         {
             name: "Python",
-            imageUrl: "./resources/imgs/Python_logo_01.svg.png"
+            imageUrl: "./resources/imgs/python.png"
         },
         {
             name: "Java",
-            imageUrl: "./resources/imgs/java-logo-1.png"
+            imageUrl: "./resources/imgs/java.png"
         },
         {
             name: "Springboot",
-            imageUrl: "./resources/imgs/Spring_Boot.svg.png"
+            imageUrl: "./resources/imgs/springboot.png"
         },
         {
             name: "Flask",
-            imageUrl: "./resources/imgs/kisspng-flask-python-bottle-web-framework-web-application-flask-5ace6e94133f66.5495283515234781640788.png"
+            imageUrl: "./resources/imgs/flask.png"
         }
     ],
     frontend: [
