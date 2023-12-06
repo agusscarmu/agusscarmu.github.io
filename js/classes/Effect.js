@@ -1,5 +1,5 @@
 import{Particle} from './Particle.js';
-import { Configuration } from '../Configuration.js';
+import { Configuration } from '../configuration.js';
 
 export class Effect {
 
@@ -8,7 +8,7 @@ export class Effect {
         this.width = canvas.width;
         this.height = canvas.height;
         this.particles = [];
-        this.numberOfParticles = Configuration.numberOfParticles;
+        this.numberOfParticles = this.width>768 ? Configuration.numberOfParticlesDesktop : Configuration.numberOfParticlesMobile;
         this.createParticles();
     }
 

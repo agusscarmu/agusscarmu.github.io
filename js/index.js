@@ -1,4 +1,4 @@
-import { Particle } from "./classes/Particle.js";
+
 import { Effect } from "./classes/Effect.js";
 import { colors } from "./colors.js";
 
@@ -54,3 +54,66 @@ function resizeCanvas(){
 window.addEventListener('resize', resizeCanvas);
 
 window.addEventListener('load', resizeCanvas);
+
+
+// Second section
+
+import { knowledgeList } from "./resources/knowledgeList.js";
+
+function clear(){
+    const knowledgeSection = document.querySelector('.select-container');
+    knowledgeSection.innerHTML = '';
+}
+
+function show(category){
+    clear();
+    const knowledge = knowledgeList[category];
+    const knowledgeSection = document.querySelector('.select-container');
+    let timer = 0;
+    knowledge.forEach(function(item){
+        timer += 100;
+        const knowledgeItem = document.createElement('div');
+        knowledgeItem.classList.add('knowledge-item');
+
+        knowledgeSection.appendChild(knowledgeItem);
+
+        const knowledgeImg = document.createElement('div');
+        knowledgeImg.classList.add('knowledge-img');
+
+        knowledgeItem.appendChild(knowledgeImg);
+
+        const img = document.createElement('img');
+        img.src = item.imageUrl;
+        img.alt = item.name;
+        knowledgeImg.appendChild(img);
+
+        const knowledgeName = document.createElement('h2');
+        knowledgeName.textContent = item.name;
+        knowledgeItem.appendChild(knowledgeName);
+
+        setTimeout(function(){
+            knowledgeItem.classList.add('show');
+        }, timer);
+    });
+}
+
+function format(category){
+    category = category.replace(' ', '');
+    return category;
+}
+
+const knowledges = document.querySelectorAll('.card.half ul li');
+
+knowledges.forEach(function(li){
+    li.addEventListener('click', function(){
+        if(this.classList.contains('clicked')){
+            return;
+        }
+        knowledges.forEach(function(li){
+            li.classList.remove('clicked');
+        });
+        this.classList.add('clicked');
+        const category = this.textContent.toLowerCase();
+        show(format(category));
+    });
+});

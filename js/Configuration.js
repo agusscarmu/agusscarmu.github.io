@@ -1,5 +1,6 @@
 export const Configuration = {
-    numberOfParticles: 100,
+    numberOfParticlesDesktop: 100,
+    numberOfParticlesMobile: 30,
     color: 220,
     maxDistance: 280,
     particleSize: 3,
