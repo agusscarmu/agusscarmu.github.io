@@ -1,5 +1,5 @@
 import{Particle} from './Particle.js';
-import { Configuration } from '../configuration.js';
+import { Configuration } from '../Configuration.js';
 
 export class Effect {
 
