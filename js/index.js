@@ -151,7 +151,9 @@ function format(category){
 }
 
 const knowledges = document.querySelectorAll('.card.half ul li');
-
+knowledges[0].classList.add('clicked');
+const category = knowledges[0].textContent.toLowerCase();
+show(format(category));
 knowledges.forEach(function(li){
     li.addEventListener('click', function(){
         if(this.classList.contains('clicked')){
@@ -163,5 +165,65 @@ knowledges.forEach(function(li){
         this.classList.add('clicked');
         const category = this.textContent.toLowerCase();
         show(format(category));
+    });
+});
+
+import { projectsList } from "./resources/projectsList.js";
+
+function showProject(index){
+    const project = projectsList[index];
+    const projectContainer = document.querySelector('.project');
+    projectContainer.innerHTML = '';
+
+    const projectTitle = document.createElement('div');
+    projectTitle.classList.add('project-title');
+    projectContainer.appendChild(projectTitle);
+
+    const title = document.createElement('h2');
+    title.textContent = project.name;
+    projectTitle.appendChild(title);
+
+    const projectImg = document.createElement('div');
+    projectImg.classList.add('project-img');
+    projectTitle.appendChild(projectImg);
+
+    const img = document.createElement('img');
+    img.src = project.imageUrl;
+    img.alt = project.name;
+    projectImg.appendChild(img);
+
+    const projectDescription = document.createElement('div');
+    projectDescription.classList.add('project-description');
+    projectContainer.appendChild(projectDescription);
+
+    const description = document.createElement('p');
+    description.textContent = project.description;
+    projectDescription.appendChild(description);
+
+    const projectLink = document.createElement('div');
+    projectLink.classList.add('project-link');
+    projectDescription.appendChild(projectLink);
+
+    const link = document.createElement('a');
+    link.href = project.link;
+    link.target = '_blank';
+    link.textContent = 'View project';
+    projectLink.appendChild(link);
+}
+
+const projects = document.querySelectorAll('.project-container .tabs li');
+projects[0].classList.add('clicked');
+showProject(0);
+
+projects.forEach(function(li, index){
+    li.addEventListener('click', function(){
+        if(this.classList.contains('clicked')){
+            return;
+        }
+        projects.forEach(function(li){
+            li.classList.remove('clicked');
+        });
+        this.classList.add('clicked');
+        showProject(index);
     });
 });
