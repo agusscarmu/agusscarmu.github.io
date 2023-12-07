@@ -56,6 +56,7 @@ body{
     position: fixed;
     padding: 0;
     margin: 0;
+    transition: all 500ms ease-out;
 }
 
 .container{
@@ -98,12 +99,11 @@ body{
     height: 80%;
     background: linear-gradient(to bottom right, var(--gradient-color-div-1), var(--gradient-color-div-2));
     border-radius: 10px;
-    backdrop-filter: blur(2px); 
+    backdrop-filter: blur(5px); 
     padding: 3%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-
 }
 
 
@@ -348,10 +348,108 @@ body{
     margin-bottom: 2%;
 }
 
+/* Third section */
+
+.third-section{
+    width: 100%;
+    padding-top: 150vh;
+    height: 500vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.card.full-half{
+    width: 50%;
+    height: 100%;
+}
+
+.first-third-sub-section{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 500ms ease-out;
+}
+
+.card.projects{
+    background: linear-gradient(to bottom right, var(--gradient-color-div-1), var(--gradient-color-div-2));
+    border-radius: 10px;
+    backdrop-filter: blur(5px); 
+    padding: 3%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.card.projects h1{
+    font-size: 5vh;
+    background-color: transparent;
+    color: rgba(var(--primary-50));
+    letter-spacing: 5px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.project-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 2%;
+    gap: 20px;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.tabs{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    background-color: rgba(var(--primary-100), 0.5);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 5px solid rgba(var(--primary-600));
+}
+
+.tabs li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: rgba(var(--primary-950));
+    font-size: 2vh;
+    cursor: pointer;
+    transition: all 500ms ease-out;
+}
+
+.tabs li.left{
+    border-bottom-left-radius: 10px;
+}
+.tabs li.right{
+    border-bottom-right-radius: 10px;
+}
+
+.tabs li:hover{
+    background-color: rgba(var(--primary-50));
+    transition: all 500ms ease-out;
+    box-shadow: var(--shadow-1);
+}
+
 @media screen and (min-width: 768px) {
     .card {
         width: 60%;
-        height: 70%;
+        height: 75%;
     
     }
     .text-container h1{

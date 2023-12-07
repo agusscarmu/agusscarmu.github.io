@@ -30,13 +30,61 @@ document.addEventListener('mousemove', (event) => {
     mouseY = event.clientY;
 });
 
+function isElementInViewport(el, onlyTop, onlyBottom) {
+    var rect = el.getBoundingClientRect();
+    if(onlyTop){
+        return (
+            rect.top <= 0
+        );
+    }
+    return (
+        rect.top <= 0 &&
+        rect.bottom >= 0
+    );
+}
+const firstSection = document.querySelector('.first-section');
+const secondSection = document.querySelector('.second-section');
+const thirdSection = document.querySelector('.third-section');
+const firstThirdSubSection = document.querySelector('.first-third-sub-section');
+const titleProjects = document.querySelector('.card.projects .text-container h1');
+let i = 0;
+let lastScroll = 0;
 document.addEventListener('scroll', () => {
-    canvas.style.filter = `blur(${window.scrollY / 150}px)`;
+    if(isElementInViewport(firstSection)){
+        effect.enableMouseTracking();
+    }else{
+        effect.disableMouseTracking();
+    }
+    if(!isElementInViewport(secondSection) && !isElementInViewport(thirdSection)){
+        canvas.style.filter = `blur(${window.scrollY / 150}px)`;
+    }else{
+        canvas.style.filter = 'blur(0px)';
+    }
     if(window.scrollY > 100){
         scrollDown.classList.add('hide');
     }else{
         scrollDown.classList.remove('hide');
     }
+    if(i>100){
+        i = 100;
+    }else if(i<0){
+        i = 0;
+    }
+    if (isElementInViewport(thirdSection, true) && scrollY > lastScroll && !isElementInViewport(firstThirdSubSection, true)) {
+        i++;
+        canvas.style.transform = `perspective(${1000+ (i *0.01)}px) rotateY(${i * 0.1}deg) rotate(${i * 0.1}deg) rotateX(${i * 0.1}deg)`;
+    } else if (isElementInViewport(thirdSection, true) && scrollY < lastScroll && !isElementInViewport(firstThirdSubSection, true)) {
+        i--;
+        canvas.style.transform = `perspective(${1000+ (i *0.01)}px) rotateY(${i * 0.1}deg) rotate(${i * 0.1}deg) rotateX(${i * 0.1}deg)`;
+    } else if(isElementInViewport(firstThirdSubSection, true)){
+        canvas.style.transform = `perspective(${1000+ (i *0.01)}px) rotateY(${i * 0.1}deg) rotate(${i * 0.1}deg) rotateX(${i * 0.1}deg)`;
+    }
+    else {
+        i = 0;
+        canvas.style.transform = 'perspective(1000px) rotate(0deg) rotateY(0deg) rotateX(0deg)';
+    }
+
+    lastScroll = scrollY;
 });
 
 animate();

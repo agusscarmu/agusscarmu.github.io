@@ -7,6 +7,7 @@ export class Effect {
         this.canvas = canvas;
         this.width = canvas.width;
         this.height = canvas.height;
+        this.mouseTracking = true;
         this.particles = [];
         this.numberOfParticles = this.width>768 ? Configuration.numberOfParticlesDesktop : Configuration.numberOfParticlesMobile;
         this.createParticles();
@@ -24,6 +25,14 @@ export class Effect {
             particle.update();
             particle.draw(context, Configuration.color);
         });
+    }
+
+    disableMouseTracking(){
+        this.mouseTracking = false;
+    }
+
+    enableMouseTracking(){
+        this.mouseTracking = true;
     }
 
     connectParticles(context, mouseX, mouseY){
@@ -44,7 +53,7 @@ export class Effect {
                     context.stroke();
                 }
             }
-            if(mouseX){
+            if(mouseX && mouseY && this.mouseTracking){
                 const dx = this.particles[a].x - mouseX;
                 const dy = this.particles[a].y - mouseY;
                 const distance = Math.hypot(dx, dy);
