@@ -50,11 +50,6 @@ const titleProjects = document.querySelector('.card.projects .text-container h1'
 let i = 0;
 let lastScroll = 0;
 document.addEventListener('scroll', () => {
-    if(isElementInViewport(firstSection)){
-        effect.enableMouseTracking();
-    }else{
-        effect.disableMouseTracking();
-    }
     if(!isElementInViewport(secondSection) && !isElementInViewport(thirdSection)){
         canvas.style.filter = `blur(${window.scrollY / 150}px)`;
     }else{
@@ -69,19 +64,6 @@ document.addEventListener('scroll', () => {
         i = 100;
     }else if(i<0){
         i = 0;
-    }
-    if (isElementInViewport(thirdSection, true) && scrollY > lastScroll && !isElementInViewport(firstThirdSubSection, true)) {
-        i++;
-        canvas.style.transform = `perspective(${1000+ (i *0.01)}px) rotateY(${i * 0.1}deg) rotate(${i * 0.1}deg) rotateX(${i * 0.1}deg)`;
-    } else if (isElementInViewport(thirdSection, true) && scrollY < lastScroll && !isElementInViewport(firstThirdSubSection, true)) {
-        i--;
-        canvas.style.transform = `perspective(${1000+ (i *0.01)}px) rotateY(${i * 0.1}deg) rotate(${i * 0.1}deg) rotateX(${i * 0.1}deg)`;
-    } else if(isElementInViewport(firstThirdSubSection, true)){
-        canvas.style.transform = `perspective(${1000+ (i *0.01)}px) rotateY(${i * 0.1}deg) rotate(${i * 0.1}deg) rotateX(${i * 0.1}deg)`;
-    }
-    else {
-        i = 0;
-        canvas.style.transform = 'perspective(1000px) rotate(0deg) rotateY(0deg) rotateX(0deg)';
     }
 
     lastScroll = scrollY;
@@ -226,4 +208,18 @@ projects.forEach(function(li, index){
         this.classList.add('clicked');
         showProject(index);
     });
+});
+
+// Contact me
+
+const messageArea = document.querySelector('.input-container.message textarea');
+const submitButton = document.querySelector('.input-container.submit input')
+messageArea.addEventListener('input', function(){
+    if(messageArea.value.length > 0){
+        submitButton.disabled = false;
+        submitButton.classList.add('active');
+    }else{
+        submitButton.disabled = true;
+        submitButton.classList.remove('active');
+    }
 });
