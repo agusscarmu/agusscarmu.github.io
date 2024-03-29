@@ -60,9 +60,9 @@ export const knowledgeList = {
             name: "Scikit-learn",
             imageUrl: "./resources/imgs/sklearn.png"
         },
-        {
-            name: "TensorFlow",
-            imageUrl: "./resources/imgs/tensorflow.png"
-        }
+        // {
+        //     name: "TensorFlow",
+        //     imageUrl: "./resources/imgs/tensorflow.png"
+        // }
     ],
 };
