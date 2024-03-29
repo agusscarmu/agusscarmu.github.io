@@ -1,5 +1,5 @@
 export const knowledgeList = {
-    backend: [
+    backendfrontend: [
         {
             name: "Python",
             imageUrl: "./resources/imgs/python.png"
@@ -11,20 +11,6 @@ export const knowledgeList = {
         {
             name: "Springboot",
             imageUrl: "./resources/imgs/springboot.png"
-        },
-        {
-            name: "Flask",
-            imageUrl: "./resources/imgs/flask.png"
-        }
-    ],
-    frontend: [
-        {
-            name: "Html",
-            imageUrl: "./resources/imgs/html.png"
-        },
-        {
-            name: "Css",
-            imageUrl: "./resources/imgs/css.png"
         },
         {
             name: "JavaScript",
@@ -49,7 +35,7 @@ export const knowledgeList = {
             imageUrl: "./resources/imgs/mongodb.png"
         }
     ],
-    datascience: [
+    datasciencemachinelearning: [
         {
             name: "Jupyter",
             imageUrl: "./resources/imgs/jupyter.png"
@@ -65,6 +51,18 @@ export const knowledgeList = {
         {
             name: "Matplotlib",
             imageUrl: "./resources/imgs/matplotlib.png"
+        },
+        {
+            name: "Seaborn",
+            imageUrl: "./resources/imgs/seaborn.png"
+        },
+        {
+            name: "Scikit-learn",
+            imageUrl: "./resources/imgs/sklearn.png"
+        },
+        {
+            name: "TensorFlow",
+            imageUrl: "./resources/imgs/tensorflow.png"
         }
     ],
 };

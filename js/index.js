@@ -128,13 +128,15 @@ function show(category){
 }
 
 function format(category){
-    category = category.replace(' ', '');
+    category = category.replace(/\s+/g, ''); 
+    category = category.replace('&', ''); 
     return category;
 }
 
 const knowledges = document.querySelectorAll('.card.half.knowledge ul li');
 knowledges[0].classList.add('clicked');
 const category = knowledges[0].textContent.toLowerCase();
+console.log(format(category));
 show(format(category));
 knowledges.forEach(function(li){
     li.addEventListener('click', function(){
