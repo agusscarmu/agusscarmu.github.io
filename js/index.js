@@ -272,7 +272,11 @@ function showAcademic(category){
         academicText.appendChild(academicInstitution);
 
         academicItem.appendChild(academicText);
-
+        academicItem.addEventListener('click', function(){
+            if(item.credential){
+                window.open(item.credential, '_blank');
+            }
+        });
         setTimeout(function(){
             academicItem.classList.add('show');
         }, timer);
