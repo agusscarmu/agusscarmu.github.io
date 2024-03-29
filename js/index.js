@@ -51,7 +51,7 @@ let i = 0;
 let lastScroll = 0;
 document.addEventListener('scroll', () => {
     if(!isElementInViewport(secondSection) && !isElementInViewport(thirdSection)){
-        canvas.style.filter = `blur(${window.scrollY / 150}px)`;
+        canvas.style.filter = `blur(${window.scrollY / 350}px)`;
     }else{
         canvas.style.filter = 'blur(0px)';
     }
@@ -132,7 +132,7 @@ function format(category){
     return category;
 }
 
-const knowledges = document.querySelectorAll('.card.half ul li');
+const knowledges = document.querySelectorAll('.card.half.knowledge ul li');
 knowledges[0].classList.add('clicked');
 const category = knowledges[0].textContent.toLowerCase();
 show(format(category));
@@ -223,3 +223,83 @@ messageArea.addEventListener('input', function(){
         submitButton.classList.remove('active');
     }
 });
+
+
+// Academic background
+
+import { academicList } from "./resources/academicList.js";
+
+function clearAcademic(){
+    const academicSection = document.querySelector('.background.list');
+    academicSection.innerHTML = '';
+}
+
+function showAcademic(category){
+    clearAcademic();
+    const academic = academicList[category];
+    const academicSection = document.querySelector('.background.list');
+    const academicUl = document.createElement('ul');
+    academicSection.appendChild(academicUl);
+    let timer = 0;
+    academic.forEach(function(item){
+        timer += 100;
+        const itemLi = document.createElement('li');
+        const academicItem = document.createElement('div');
+        academicItem.classList.add('background-item');
+
+        itemLi.appendChild(academicItem);
+        academicUl.appendChild(itemLi);
+
+        const academicImg = document.createElement('div');
+        academicImg.classList.add('background-image');
+
+        academicItem.appendChild(academicImg);
+
+        const img = document.createElement('img');
+        img.src = item.imageUrl;
+        img.alt = item.name;
+        academicImg.appendChild(img);
+
+        const academicText = document.createElement('div');
+        academicText.classList.add('background-text');
+
+        const academicName = document.createElement('h2');
+        academicName.textContent = item.name;
+        academicText.appendChild(academicName);
+
+        const academicInstitution = document.createElement('p');
+        academicInstitution.textContent = item.institution;
+        academicText.appendChild(academicInstitution);
+
+        academicItem.appendChild(academicText);
+
+        setTimeout(function(){
+            academicItem.classList.add('show');
+        }, timer);
+    });
+}
+
+function formatAcademic(category){
+    category = category.replace(' ', '');
+    return category;
+}
+
+const academics = document.querySelectorAll('.card.half.background ul li');
+academics[0].classList.add('clicked');
+const categoryAcademic = academics[0].textContent;
+showAcademic(formatAcademic(categoryAcademic));
+academics.forEach(function(li){
+    li.addEventListener('click', function(){
+        if(this.classList.contains('clicked')){
+            return;
+        }
+        academics.forEach(function(li){
+            li.classList.remove('clicked');
+        });
+        this.classList.add('clicked');
+        const category = this.textContent;
+        showAcademic(category);
+    });
+});
+
+
