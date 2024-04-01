@@ -42,11 +42,8 @@ function isElementInViewport(el, onlyTop, onlyBottom) {
         rect.bottom >= 0
     );
 }
-const firstSection = document.querySelector('.first-section');
 const secondSection = document.querySelector('.second-section');
 const thirdSection = document.querySelector('.third-section');
-const firstThirdSubSection = document.querySelector('.first-third-sub-section');
-const titleProjects = document.querySelector('.card.projects .text-container h1');
 let i = 0;
 let lastScroll = 0;
 document.addEventListener('scroll', () => {
@@ -132,23 +129,24 @@ function format(category){
     category = category.replace('&', ''); 
     return category;
 }
-
-const knowledges = document.querySelectorAll('.card.half.knowledge ul li');
-knowledges[0].classList.add('clicked');
-const category = knowledges[0].textContent.toLowerCase();
-console.log(format(category));
-show(format(category));
-knowledges.forEach(function(li){
-    li.addEventListener('click', function(){
-        if(this.classList.contains('clicked')){
-            return;
-        }
-        knowledges.forEach(function(li){
-            li.classList.remove('clicked');
+document.addEventListener('DOMContentLoaded', function(){
+    const knowledges = document.querySelectorAll('.card.half.knowledge ul li');
+    knowledges[0].classList.add('clicked');
+    const category = knowledges[0].textContent.toLowerCase();
+    console.log(format(category));
+    show(format(category));
+    knowledges.forEach(function(li){
+        li.addEventListener('click', function(){
+            if(this.classList.contains('clicked')){
+                return;
+            }
+            knowledges.forEach(function(li){
+                li.classList.remove('clicked');
+            });
+            this.classList.add('clicked');
+            const category = this.textContent.toLowerCase();
+            show(format(category));
         });
-        this.classList.add('clicked');
-        const category = this.textContent.toLowerCase();
-        show(format(category));
     });
 });
 
