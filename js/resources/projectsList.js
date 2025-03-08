@@ -1,9 +1,9 @@
 export const projectsList = [
     {
-        name: "Bioinformatic Computational Drug Discovery",
-        imageUrl: "./resources/imgs/bioinformatic.png",
-        description: "Bioinformatic Computational Drug Discovery is a project that aims to predict the binding affinity of a drug to aromatase. The project is over developing using Python, Pandas and Numpy.",
-        link: "https://github.com/agusscarmu/Aromatase-Drug-Discovery"
+        name: "Medical imaging - 3D Reconstruction",
+        imageUrl: "./resources/imgs/Sagittal_brain_MRI.jpg",
+        description: "A 3D medical imaging application that processes CT scans for segmentation and visualization. Designed to enhance medical analysis and diagnostics by providing an interactive 3D reconstruction of tomographic data. There is a preview of the application in the following link.",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7300208732284583936/"
     },
     {
         name: "Springboot Rest API - Scooters",
