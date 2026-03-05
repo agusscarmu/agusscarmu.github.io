@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { personalInfo } from '../data/db';
 
 const Footer = () => {
     return (
@@ -16,15 +17,14 @@ const Footer = () => {
                 </p>
 
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '3rem' }}>
-                    <a href="https://github.com/AgustinCarmusciano" className="social-link" style={{ color: '#fff', fontSize: '1.5rem', transition: 'color 0.3s' }}>
-                        <FaGithub />
-                    </a>
-                    <a href="https://linkedin.com/in/AgustinCarmusciano" className="social-link" style={{ color: '#fff', fontSize: '1.5rem', transition: 'color 0.3s' }}>
-                        <FaLinkedin />
-                    </a>
-                    <a href="mailto:contact@agustincarmusciano.com" className="social-link" style={{ color: '#fff', fontSize: '1.5rem', transition: 'color 0.3s' }}>
-                        <FaEnvelope />
-                    </a>
+                    {personalInfo.social.map((link) => {
+                        const IconComponent = link.icon;
+                        return (
+                            <a key={link.name} href={link.url} className="social-link" style={{ color: '#fff', fontSize: '1.5rem', transition: 'color 0.3s' }}>
+                                <IconComponent />
+                            </a>
+                        );
+                    })}
                 </div>
 
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
